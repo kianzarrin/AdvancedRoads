@@ -1,3 +1,4 @@
+#if DEBUG
 namespace AdaptiveRoads.LifeCycle
 {
     using JetBrains.Annotations;
@@ -47,7 +48,5 @@ namespace AdaptiveRoads.LifeCycle
             }
         }
     }
-
-
-
 }
+#endif
