@@ -89,7 +89,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="DecompiledSources\**" />
-    <Compile Remove="LifeCycle\SerializableDataExtension.cs" />
     <Compile Remove="Patches\AssetPatches\InitializePrefabImpl.cs" />
     <Compile Remove="Patches\AsymPavements\GetPathTargetPosition.cs" />
     <Compile Remove="Patches\HarmonyExtension.cs" />
