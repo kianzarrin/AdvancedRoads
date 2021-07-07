@@ -19,16 +19,19 @@ namespace AdaptiveRoads.Patches.Corner {
         static MethodInfo mCaclculateCorner = typeof(NetSegment)
             .GetMethod(nameof(NetSegment.CalculateCorner), BindingFlags.Public | BindingFlags.Instance, throwOnError: true);
 
-        public static float Shift { get; private set; }
-        public static ushort TargetSegmentID;
-
-        static void Prefix(ushort nodeSegment, ushort nodeSegment2) {
-            Shift = nodeSegment.ToSegment().Info.GetMetaData()?.Shift ?? 0; // target segment uses source shift.
-            TargetSegmentID = nodeSegment2;
+        static void Prefix(NetInfo info, NetInfo info2, ushort nodeSegment2 ) {
+            var metadata2 = info2.GetMetaData();
+            if (metadata2 == null && metadata2.UseSourceShift) {
+                var metadata = info.GetMetaData();
+                CalculateCornerPatchData.Shift = info.GetMetaData()?.Shift ?? 0;
+                CalculateCornerPatchData.TargetSegmentID = nodeSegment2; // target segment uses source shift.
+            } else {
+                CalculateCornerPatchData.TargetSegmentID = 0; // use target shift.
+            }
         }
 
         static void Postfix() {
-            TargetSegmentID = 0;
+            CalculateCornerPatchData.TargetSegmentID = 0;
         }
 
     }

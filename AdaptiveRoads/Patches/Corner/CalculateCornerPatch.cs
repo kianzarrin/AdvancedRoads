@@ -6,6 +6,11 @@ namespace AdaptiveRoads.Patches.Corner {
     using System.Reflection;
     using UnityEngine;
 
+    public static class CalculateCornerPatchData {
+        public static float Shift;
+        public static ushort TargetSegmentID;
+    }
+
     [InGamePatch]
     [UsedImplicitly]
     [HarmonyPatch]

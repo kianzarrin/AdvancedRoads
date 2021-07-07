@@ -253,6 +253,11 @@ namespace AdaptiveRoads.Manager {
             [Hint("shifts road right-wards (when going from tail to head)")]
             public float Shift = 0;
 
+            [Hint("[Advanced] use shift of source network for DC nodes connected to this.")]
+            [CustomizableProperty("DC Shift")]
+            [AfterField(nameof(NetInfo.m_pavementWidth))]
+            public bool UseSourceShift;
+
             [AfterField(nameof(NetInfo.m_minCornerOffset))]
             [CustomizableProperty("Parking Angle °", "Properties")]
             public float ParkingAngleDegrees = 0;
